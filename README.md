@@ -23,8 +23,8 @@ Separate work and personal data on Android devices using an **Android Enterprise
 
 | File | Audience | Description |
 |------|----------|-------------|
-| [WP admin](WP%20admin) | Admin | Enable Android Enterprise, configure Work Profile enrollment, approve apps via Managed Google Play, deploy App Protection Policies, App Configuration Policies, and compliance policies. |
-| [WP user](WP%20user) | End User | Enroll an Android device, set up the Work Profile, install apps, allow contacts permission, and understand how work contacts appear for caller ID and search while keeping personal data separate. |
+| [WP admin.md](WP%20admin.md) | Admin | Enable Android Enterprise, configure Work Profile enrollment, approve apps via Managed Google Play, deploy App Protection Policies, App Configuration Policies, and compliance policies. |
+| [WP user.md](WP%20user.md) | End User | Enroll an Android device, set up the Work Profile, install apps, allow contacts permission, and understand how work contacts appear for caller ID and search while keeping work and personal data separate. |
 
 ---
 
@@ -34,8 +34,8 @@ Fully enroll **iPhone / iPad** devices into Intune via Company Portal (BYOD).
 
 | File | Audience | Description |
 |------|----------|-------------|
-| [iOS device enrollment admin](iOS%20device%20enrollment%20admin) | Admin | Configure iOS enrollment prerequisites, deploy and assign required apps, set up App Protection Policies, App Configuration Policies, and compliance policies. |
-| [iOS device enrollment user](iOS%20device%20enrollment%20user) | End User | Install Company Portal, enroll the device, install a management profile, and complete app setup. Covers how work contacts sync to the device. |
+| [iOS device enrollment admin.md](iOS%20device%20enrollment%20admin.md) | Admin | Configure iOS enrollment prerequisites, deploy and assign required apps, set up App Protection Policies, App Configuration Policies, and compliance policies. |
+| [iOS device enrollment user.md](iOS%20device%20enrollment%20user.md) | End User | Install Company Portal, enroll the device, install a management profile, and complete app setup. Covers how work contacts sync to the device. |
 
 ---
 
@@ -53,7 +53,7 @@ Fully enroll **iPhone / iPad** devices into Intune via Company Portal (BYOD).
 
 This project welcomes contributions and suggestions. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.
 
-Most contributions require you to agree to a **Contributor License Agreement (CLA)** declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit [https://cla.opensource.microsoft.com](https://cla.opensource.microsoft.com).
+Most contributions require you to agree to a **Contributor License Agreement (CLA)** declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
 ---
 
