@@ -93,10 +93,13 @@ Once you're confident everything is covered by APP:
 
 ---
 
-### Clarifying questions before you proceed
+**Supporting official docs**
 
-A few things that would affect the specifics:
-
-1. **How many tenants** are in scope — just PrahaWS or also customer tenants you manage?
-2. **Are your affected users primarily on enrolled (MDM) devices, or do you have significant BYOD/MAM-only population?** The impact profile differs substantially.
-3. **Do you use any non-Microsoft apps** (custom LOB, third-party) in your CA scope that might not have Intune SDK integration?
+| Topic | Link |
+|---|---|
+| Grant controls reference (approved app + APP explained) | [concept-conditional-access-grant](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-grant) |
+| App protection policy requirement (supported app list) | [same page, #require-app-protection-policy anchor](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-grant#require-app-protection-policy) |
+| Create app protection policies in Intune | [app-protection-policies](https://learn.microsoft.com/en-us/intune/intune-service/apps/app-protection-policies) |
+| APP overview (what it does, platforms) | [app-protection-policy](https://learn.microsoft.com/en-us/mem/intune/apps/app-protection-policy) |
+| Report-only mode for CA validation | [concept-conditional-access-report-only](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-report-only) |
+| Require approved app or APP — full policy walkthrough | [policy-all-users-approved-app-or-app-protection](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-all-users-approved-app-or-app-protection) |
