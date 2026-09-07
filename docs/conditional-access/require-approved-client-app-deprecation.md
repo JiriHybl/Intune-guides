@@ -1,4 +1,9 @@
-Here's a comprehensive step-by-step guide for the migration.
+# Require Approved Client App — Deprecation & Migration Guide
+
+**Audience:** Administrator
+**Platform:** iOS & Android
+**Intune workload:** Conditional Access
+**Status:** Deprecation notice
 
 ---
 
