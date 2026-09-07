@@ -33,7 +33,7 @@
 
 Traditional Windows printing often relies on a combination of **vendor-specific print drivers**, on-premises **print servers**, and complex GPO-based deployment. Every printer model may require its own driver package installed on each client machine. Drivers must be maintained, updated, and tested across OS versions. Print servers become a critical piece of infrastructure that require patching, monitoring, and failover planning. The result is significant operational overhead for IT — disproportionate to what is ultimately a simple user need: put a document on paper.
 
-Microsoft Universal Print eliminates this complexity by moving print management entirely to the cloud.
+Microsoft Universal Print can move much of this management to the cloud, particularly for native Universal Print-ready printers.
 
 ---
 
@@ -47,7 +47,7 @@ Microsoft Universal Print eliminates this complexity by moving print management 
 
 **Modern authentication.** Print access is controlled via Microsoft Entra ID. Users and devices authenticate with their existing M365 identity. There are no printer-specific passwords or legacy domain dependencies.
 
-**Consistent cross-platform experience.** The same printer shares and permissions work on Windows, macOS, and (for pull-print release) mobile — all using the same cloud infrastructure.
+**Consistent cross-platform experience.** The same printer shares and permissions can be used on Windows and macOS, with the same cloud infrastructure also supporting browser-based pull-print release from phones, tablets, and desktops.
 
 ---
 
@@ -58,7 +58,7 @@ Microsoft Universal Print eliminates this complexity by moving print management 
 | Vendor-specific driver (PCL, PS, UFR II, etc.) installed per device | Built-in Windows/macOS IPP class driver for native Universal Print-ready printers |
 | Driver managed via print server or Intune Win32 app deployment | Reduced driver management for native printers; connector deployments may still require a driver |
 | Driver updates can break printing or require re-testing | OS-level IPP support is updated as part of OS patching |
-| Different driver per printer model | Single class driver works across all Universal Print printers |
+| Different driver per printer model | A common class-driver approach for compatible native Universal Print-ready printers |
 
 The trade-off is that **IPP class drivers offer a standardised, reduced feature set** compared to full vendor drivers. Features like booklet printing, stapling, hole punching, or advanced finishing options may not be available — or may behave differently — depending on what the printer exposes via the Mopria/IPP standard.
 
@@ -110,7 +110,7 @@ Microsoft Universal Print is a cloud-based printing service that can replace on-
 
 ## 3. Prerequisites & Licensing
 
-### 2.1 License Requirements
+### 3.1 License Requirements
 
 Universal Print is included in the following Microsoft 365 licenses:
 
@@ -134,7 +134,7 @@ Universal Print is included in the following Microsoft 365 licenses:
 
 ---
 
-### 2.2 Client Device Prerequisites
+### 3.2 Client Device Prerequisites
 
 | Platform | Requirement |
 |---|---|
@@ -154,7 +154,7 @@ All endpoints (user devices and printers) must have outbound HTTPS access to Mic
 
 ---
 
-### 2.3 Administrator Role Assignments
+### 3.3 Administrator Role Assignments
 
 | Role | Permissions |
 |---|---|
@@ -167,7 +167,7 @@ All endpoints (user devices and printers) must have outbound HTTPS access to Mic
 
 ## 4. Architecture Decisions
 
-### 3.1 Printer Connectivity: Native vs. Connector
+### 4.1 Printer Connectivity: Native vs. Connector
 
 For each printer, decide between:
 
@@ -182,7 +182,7 @@ For each printer, decide between:
 
 ---
 
-### 3.2 Connector Placement Options
+### 4.2 Connector Placement Options
 
 | Placement | Pros | Cons |
 |---|---|---|
@@ -247,12 +247,12 @@ For each printer, decide between:
 
 ## 6. Printer Registration Strategy
 
-### 5.1 Universal Print Ready Printers
+### 6.1 Universal Print Ready Printers
 
 - Follow manufacturer firmware update instructions
 - Register directly in Azure Portal (no connector needed)
 
-### 5.2 Printers via Connector
+### 6.2 Printers via Connector
 
 1. Download connector from [https://aka.ms/upconnector](https://aka.ms/upconnector)
 2. Install on connector host (Windows 11 64-bit version 22631 or later, or Windows Server 2025 or later; supported older options include Windows 10 19045+, Windows Server 2022, and Windows Server 2019; .NET Framework 4.8 or later is required)
@@ -260,7 +260,7 @@ For each printer, decide between:
 4. Register printers from the connector UI — all locally installed printers are visible
 5. Verify registered printers appear in Azure Portal → Universal Print → Printers
 
-### 5.3 Post-Registration Configuration (Azure Portal)
+### 6.3 Post-Registration Configuration (Azure Portal)
 
 For each printer share, configure:
 
