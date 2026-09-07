@@ -1,8 +1,8 @@
 # Microsoft Universal Print — Deployment Plan
 
 **Version:** 1.0  
-**Date:** April 2026  
-**Status:** Draft
+**Date:** September 2026
+**Status:** Draft — reviewed and updated September 7, 2026
 
 ---
 
@@ -31,7 +31,7 @@
 
 ### Why Universal Print?
 
-Traditional Windows printing relies on a combination of **vendor-specific print drivers**, on-premises **print servers**, and complex GPO-based deployment. Every printer model typically requires its own driver package installed on each client machine. Drivers must be maintained, updated, and tested across OS versions. Print servers become a critical piece of infrastructure that require patching, monitoring, and failover planning. The result is significant operational overhead for IT — disproportionate to what is ultimately a simple user need: put a document on paper.
+Traditional Windows printing often relies on a combination of **vendor-specific print drivers**, on-premises **print servers**, and complex GPO-based deployment. Every printer model may require its own driver package installed on each client machine. Drivers must be maintained, updated, and tested across OS versions. Print servers become a critical piece of infrastructure that require patching, monitoring, and failover planning. The result is significant operational overhead for IT — disproportionate to what is ultimately a simple user need: put a document on paper.
 
 Microsoft Universal Print eliminates this complexity by moving print management entirely to the cloud.
 
@@ -39,9 +39,9 @@ Microsoft Universal Print eliminates this complexity by moving print management 
 
 ### How Universal Print simplifies printing
 
-**No vendor print drivers.** Universal Print uses the **IPP (Internet Printing Protocol)** standard, specifically the Mopria-certified IPP implementation. Windows 10/11 and macOS have built-in IPP support at the OS level — no third-party driver installation is needed on client devices. The OS handles rendering and communication with the printer natively.
+**Reduced driver management for native printers.** Universal Print-ready printers use the **IPP (Internet Printing Protocol)** standard, specifically the Mopria-certified IPP implementation. Windows and macOS have built-in IPP support at the OS level, so no third-party driver installation is needed for those native scenarios. Connector-based deployments may still depend on the printer's installed driver or a Microsoft IPP class/OEM universal driver, and feature availability varies.
 
-**No print servers.** Printers register directly with the Microsoft cloud (or via a lightweight connector for older hardware). There is no Windows print spooler service to maintain, no driver store to manage, and no print server to patch or monitor.
+**No print server for native printers.** Universal Print-ready printers register directly with the Microsoft cloud. Older or unsupported printers use a connector on a Windows host, which remains an infrastructure dependency and requires patching and monitoring.
 
 **Centralised management.** All printers, shares, permissions, location metadata, and job logs are managed from a single Azure Portal interface. Printer deployment to endpoints is handled via Intune policy — silent, zero-touch, no user action required.
 
@@ -55,8 +55,8 @@ Microsoft Universal Print eliminates this complexity by moving print management 
 
 | Legacy printing | Universal Print |
 |---|---|
-| Vendor-specific driver (PCL, PS, UFR II, etc.) installed per device | Built-in Windows/macOS IPP class driver — no installation needed |
-| Driver managed via print server or Intune Win32 app deployment | No driver management required |
+| Vendor-specific driver (PCL, PS, UFR II, etc.) installed per device | Built-in Windows/macOS IPP class driver for native Universal Print-ready printers |
+| Driver managed via print server or Intune Win32 app deployment | Reduced driver management for native printers; connector deployments may still require a driver |
 | Driver updates can break printing or require re-testing | OS-level IPP support is updated as part of OS patching |
 | Different driver per printer model | Single class driver works across all Universal Print printers |
 
@@ -78,7 +78,7 @@ Common issues observed in Universal Print deployments:
 | **Legacy line-of-business (LOB) apps** | Applications that print via GDI (older Win32 apps) or that call specific driver APIs may produce incorrect output or fail to print |
 | **SAP / ERP printing** | SAP and similar ERP systems often have tightly coupled printer configurations; output format and finishing must be re-validated |
 | **Label and receipt printing** | Specialised printers (thermal label, POS receipt) rarely support IPP/Mopria; Universal Print is not suitable for these |
-| **PDF/XPS rendering differences** | Universal Print performs XPS ↔ PDF conversion server-side; complex documents (transparencies, embedded fonts) should be tested |
+| **PDF/XPS rendering differences** | Universal Print can perform XPS ↔ PDF conversion server-side in supported scenarios; this is not a universal fix for driver, capability, or complex-document compatibility issues |
 | **macOS app compatibility** | Most macOS apps print fine via IPP; apps that rely on vendor PPD files for advanced options may lose those options |
 
 > **Recommendation:** Before decommissioning any legacy print infrastructure, run a parallel period where both Universal Print and legacy shares are available. Require pilot users to actively test printing from all applications they use — not just Microsoft Office.
@@ -96,7 +96,7 @@ Common issues observed in Universal Print deployments:
 
 ## 2. Executive Summary
 
-Microsoft Universal Print is a cloud-based printing service that replaces on-premises print servers with the Microsoft cloud. It eliminates the need for custom print drivers and integrates natively with Microsoft Entra ID and Intune.
+Microsoft Universal Print is a cloud-based printing service that can replace on-premises print servers for native Universal Print-ready printers, while connector-based deployments retain a Windows host dependency. It reduces the need for custom print drivers in native scenarios and integrates natively with Microsoft Entra ID and Intune.
 
 **Goals of this deployment:**
 
@@ -138,9 +138,11 @@ Universal Print is included in the following Microsoft 365 licenses:
 
 | Platform | Requirement |
 |---|---|
-| Windows | Version 1903 or later; Entra Joined or Entra Hybrid Joined |
-| macOS | Ventura 13.3 or later; Universal Print macOS app from App Store |
+| Windows | Windows 11 (recommended), Entra Joined or Entra Hybrid Joined; Windows 10 only by documented exception for supported/ESU devices, with the Universal Print CSP prerequisite (KB5015807 or later) |
+| macOS | Sonoma 14.6.1 or later; Universal Print macOS app from App Store |
 | Windows Server | **Not supported** as a print client |
+
+Windows 10 reached end of support on **October 14, 2025**. Use Windows 11 as the deployment baseline; retain Windows 10 only for a documented exception covering supported/ESU devices and their applicable Universal Print CSP update.
 
 All endpoints (user devices and printers) must have outbound HTTPS access to Microsoft Universal Print service endpoints.  
 → Reference: [Universal Print network endpoints](https://learn.microsoft.com/en-us/universal-print/set-up-universal-print)
@@ -156,10 +158,10 @@ All endpoints (user devices and printers) must have outbound HTTPS access to Mic
 
 | Role | Permissions |
 |---|---|
-| Universal Print Administrator | Full management of printers, connectors, shares |
-| Printer Technician | Access to Azure Portal for printer management (no admin config) |
+| Printer Administrator | Full management of printers, connectors, shares |
+| Printer Technician | Day-to-day printer management with limited administrative scope |
 
-> **Best practice:** Assign the least-permissive role that allows admins to perform their function.
+> **Best practice:** Assign the least-permissive role that allows admins to perform their function. Use **Printer Administrator** only for staff who need full Universal Print management; use **Printer Technician** for delegated operational printer tasks.
 
 ---
 
@@ -194,7 +196,7 @@ For each printer, decide between:
 
 **Action items:**
 - [ ] Decide on connector placement strategy
-- [ ] Plan connector host machines (quantity, OS: Windows 10/11 or Server 2016+, .NET Framework 4.7.2+)
+- [ ] Plan connector host machines (quantity, recommended OS: Windows 11 64-bit version 22631 or later, or Windows Server 2025 or later; supported older options include Windows 10 19045+, Windows Server 2022, and Windows Server 2019; .NET Framework 4.8 or later)
 - [ ] Ensure connector hosts remain powered on at all times
 
 ---
@@ -253,7 +255,7 @@ For each printer, decide between:
 ### 5.2 Printers via Connector
 
 1. Download connector from [https://aka.ms/upconnector](https://aka.ms/upconnector)
-2. Install on connector host (Windows 10/11 64-bit, or Server 2016+ 64-bit)
+2. Install on connector host (Windows 11 64-bit version 22631 or later, or Windows Server 2025 or later; supported older options include Windows 10 19045+, Windows Server 2022, and Windows Server 2019; .NET Framework 4.8 or later is required)
 3. Sign in with an account that has a Universal Print license assigned
 4. Register printers from the connector UI — all locally installed printers are visible
 5. Verify registered printers appear in Azure Portal → Universal Print → Printers
@@ -268,7 +270,7 @@ For each printer share, configure:
 | Location hierarchy | Set Country → Site → Building → Floor → Room for discovery |
 | Default print settings | Configure defaults (duplex, colour) per organisational policy |
 | Allowed users/groups | Use "Allow all users" toggle for org-wide printers; assign specific groups for restricted printers |
-| Document conversion | Enable XPS ↔ PDF conversion to avoid job failures on non-supported formats |
+| Document conversion | Enable XPS ↔ PDF conversion where supported, but validate printer capabilities and complex documents rather than treating conversion as a universal workaround |
 | Partially supported printers | Consider hiding from end users to reduce support calls |
 
 ---
@@ -279,12 +281,12 @@ Deploying printers via Intune is the recommended approach — it eliminates the 
 
 ### Steps
 
-1. In Intune admin centre: **Devices → Configuration → Create policy**
+1. In Intune admin centre: **Devices → Configuration → Create → New policy**
 2. Platform: **Windows 10 and later**
-3. Profile type: **Universal Print**
-4. Select the registered printer share from Azure
+3. Profile type: **Settings catalog**
+4. Add the **Printer Provisioning** settings and select the registered Universal Print printer share
 5. Assign to user or device groups
-6. Ensure the **Universal Print printer** Windows feature is enabled on target devices
+6. Verify target Windows devices meet the Universal Print CSP prerequisite (including KB5015807 or later where applicable) and that the Intune policy is delivered successfully
 
 ### Assignment Strategy
 
@@ -296,9 +298,9 @@ Deploying printers via Intune is the recommended approach — it eliminates the 
 > **Tip:** For macOS, use Intune or Jamf to deploy the Universal Print macOS app and configure printer registration.
 
 **Action items:**
-- [ ] Create Intune printer configuration profiles per site/department
+- [ ] Create Intune Settings catalog profiles using Printer Provisioning per site/department
 - [ ] Create and test assignment groups (pilot, production)
-- [ ] Verify Universal Print Windows feature is enabled on enrolled devices
+- [ ] Verify the Universal Print CSP prerequisite and applicable Windows update are present on enrolled devices
 
 ---
 
@@ -308,12 +310,12 @@ Universal Print is **secure by default** and leverages Zero Trust principles:
 
 - All print traffic is authenticated via Microsoft Entra ID
 - No inbound firewall rules required — communication is outbound HTTPS only
-- Print jobs are transmitted over TLS; documents are not stored in the cloud after delivery
+- Print jobs are encrypted in transit with TLS 1.2 or TLS 1.3. Queued jobs are stored temporarily in Microsoft 365/Office storage and can remain for up to 10 days total, including after printing.
 - Production systems are isolated and not internet-accessible; JIT elevation is required for access
 
 ### Key security recommendations
 
-- [ ] Assign least-privilege admin roles (Universal Print Administrator vs. Printer Technician)
+- [ ] Assign least-privilege admin roles (Printer Administrator vs. Printer Technician)
 - [ ] Use "Allow all users" toggle for open printers instead of manually listing individual users (reduces management overhead)
 - [ ] Do not configure SSL inspection on Universal Print service endpoints — this causes connector and client errors (0x00000bc4)
 - [ ] Ensure system time and root/intermediate certificates are current on connector hosts
@@ -329,14 +331,14 @@ Universal Print anywhere (pull print) is now **generally available** at no extra
 
 1. User prints to a pull-print queue from any device (Windows or macOS)
 2. User walks to any configured printer in the organisation
-3. User authenticates at the printer (currently via **QR code** scanned with the Microsoft 365 mobile app)
+3. User authenticates at the printer using a supported release method. QR codes now open the browser-based Universal Print portal; the Microsoft 365 Copilot app QR-release experience was retired on August 18, 2026.
 4. Print job is released and printed
 
 ### Requirements for pull print
 
-- Microsoft 365 mobile app: Android 16.0.16501+ or iOS 2.76+
 - Secure release configured per printer in the Azure Portal
 - Printers registered in the UP portal with secure release option enabled
+- A supported release method, such as QR code, PIN, badge, or an OEM/partner integration where available
 
 ### Configuration steps
 
@@ -348,13 +350,13 @@ Universal Print anywhere (pull print) is now **generally available** at no extra
 **Action items:**
 - [ ] Determine which printers should support pull-print
 - [ ] Generate and affix QR codes at each pull-print printer
-- [ ] Confirm Microsoft 365 mobile app is deployed to users' phones via Intune
+- [ ] Test QR, PIN, badge, or OEM/partner release methods selected for each printer
 
 ---
 
 ## 10. macOS Support
 
-macOS support (Ventura 13.3+) is **generally available**.
+macOS support (Sonoma 14.6.1 or later) is **generally available**.
 
 ### Setup
 
@@ -369,33 +371,25 @@ macOS support (Ventura 13.3+) is **generally available**.
 
 ## 11. Mobile Device Support
 
-Mobile devices (iOS/Android) have a **limited but important role** in Universal Print — they are not full print clients, but are required for the pull-print (secure release) workflow.
+Mobile devices (iOS/Android) have a **limited but important role** in Universal Print — they are not general Universal Print print clients. They are not required for QR release: phones, tablets, and desktops can open the browser-based Universal Print portal.
 
 ### Mobile role summary
 
 | Scenario | Supported | Notes |
 |---|---|---|
-| Release pull-print jobs via QR code (M365 app) | ✅ Yes | Core use case for mobile |
+| Release pull-print jobs via QR code | ✅ Yes | Opens the browser-based Universal Print portal; no app installation is required |
 | Print documents directly from iOS/Android to a UP queue | ❌ No | Not natively supported by Universal Print |
 | Print via vendor printer app (local network, e.g. Canon/HP app) | ✅ Yes | Works, but bypasses Universal Print entirely |
 
-### Microsoft 365 mobile app — pull-print release
+### Browser portal and other release methods
 
-The Microsoft 365 mobile app is used to **scan the QR code** at the printer to authenticate and release queued print jobs. It is the only mobile interaction that is part of the Universal Print platform.
-
-**Minimum app versions required:**
-
-| Platform | Minimum version |
-|---|---|
-| Android | 16.0.16501 |
-| iOS | 2.76 |
+Scanning a QR code at the printer opens the browser-based Universal Print portal to authenticate and release queued print jobs. No app installation is required, and existing QR codes continue to work. Phones, tablets, and desktops can use the portal. Depending on the printer and integration, users may also release jobs with a PIN, badge, or OEM/partner-integrated method.
 
 **Action items:**
-- [ ] Confirm Microsoft 365 mobile app is deployed to all relevant users via Intune MAM/MDM policy
-- [ ] Ensure app version compliance via Intune app protection or compliance policy
-- [ ] Communicate to users that mobile phones are used for job release at the printer, not for initiating prints
+- [ ] Confirm the browser portal and selected release methods work for relevant users
+- [ ] Communicate that mobile devices are optional for QR release and are not general Universal Print print clients
 
-> **Note:** If users need to print from a mobile device directly (e.g. from a phone document or email), this must go through a vendor-specific printer app over the local network, and is outside the scope of the Universal Print deployment.
+> **Note:** If users need to print from a phone or tablet directly (e.g. from a document or email), this is outside the scope of the Universal Print print client and may require a vendor-specific printer app over the local network.
 
 ---
 
@@ -440,7 +434,7 @@ Recommended migration order to minimise user disruption:
 |---|---|
 | Connector host offline | Restart host or reinstall connector on alternate machine; legacy shares remain available during parallel period |
 | Print job failures (0x00000bc4) | Check firewall/proxy for blocked HTTPS; verify user has UP license; confirm Entra sign-in on device |
-| Intune policy not deploying | Verify device is Entra Joined; check Intune enrolment status; confirm Universal Print Windows feature is enabled |
+| Intune policy not deploying | Verify device is Entra Joined; check Intune enrolment status; confirm the Universal Print CSP prerequisite and applicable Windows update are present |
 | Pool exhaustion | Purchase add-on pack immediately; review top users/departments for reduction |
 | Full rollback needed | Revert Intune policy assignments; re-enable legacy GPO-deployed printers |
 
@@ -451,10 +445,10 @@ Recommended migration order to minimise user disruption:
 | Limitation | Notes |
 |---|---|
 | No high-availability for connector | If connector host fails, impacted printers go offline. Mitigation: redundant hosts per printer group. |
-| Secure release currently QR-code only | Badge/card release available via OEM integration (GA). |
+| Secure release methods vary | QR codes open the browser-based Universal Print portal; PIN, badge, and OEM/partner-integrated methods may also be available depending on the printer and integration. |
 | Single Entra directory per deployment | Multi-tenant printing requires per-tenant configuration. |
 | Windows Server not supported as client | Users printing from Windows Server sessions cannot use Universal Print. |
-| No automatic printer publishing via Intune | Printers must be manually registered in Azure Portal before Intune policies reference them. |
+| Intune provisioning scope | Printers must be registered and shared in Universal Print before Intune Settings catalog policies can provision their queues. Intune can then automatically install the selected queues; non-AVD shared physical Windows devices are not officially supported and may encounter policy, MFA, or installation issues. |
 
 ---
 
