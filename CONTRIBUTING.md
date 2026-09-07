@@ -29,7 +29,7 @@ When you submit a pull request, a CLA bot will automatically determine whether y
 - Use numbered steps for sequential instructions.
 - Use screenshots sparingly — only when a visual is essential.
 - Store guides under `docs/<workload>/<scenario>/` (e.g., `docs/app-protection/mam-without-enrollment/`).
-- Use lowercase, hyphen-separated filenames (e.g., `admin-guide.md`, `user-guide.md`, `deployment-plan.md`).
+- Use lowercase, hyphen-separated names for both the workload/scenario folders and the guide filenames (e.g., `app-protection/mam-without-enrollment/`, `admin-guide.md`, `user-guide.md`, `deployment-plan.md`).
 - Use [`templates/guide-template.md`](templates/guide-template.md) as the starting point for new guides.
 - Include the standard guide metadata: audience, platform, Intune workload, last-reviewed date, and status.
 - Label content clearly for its intended audience: **Admin** or **End User**.
