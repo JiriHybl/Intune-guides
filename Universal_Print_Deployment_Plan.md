@@ -310,7 +310,7 @@ Universal Print is **secure by default** and leverages Zero Trust principles:
 
 - All print traffic is authenticated via Microsoft Entra ID
 - No inbound firewall rules required — communication is outbound HTTPS only
-- Print jobs are encrypted in transit with TLS 1.2 or TLS 1.3. Queued jobs are stored temporarily in Microsoft 365/Office storage for up to 10 days from submission, including after the job has been printed.
+- Print jobs are encrypted in transit with TLS 1.2 or TLS 1.3. Queued jobs are stored temporarily in Microsoft 365 cloud storage for up to 10 days from submission, including after the job has been printed.
 - Production systems are isolated and not internet-accessible; JIT elevation is required for access
 
 ### Key security recommendations
@@ -448,7 +448,7 @@ Recommended migration order to minimise user disruption:
 | Secure release methods vary | QR codes open the browser-based Universal Print portal; PIN, badge, and OEM/partner-integrated methods may also be available depending on the printer and integration. |
 | Single Entra directory per deployment | Multi-tenant printing requires per-tenant configuration. |
 | Windows Server not supported as client | Users printing from Windows Server sessions cannot use Universal Print. |
-| Intune provisioning scope | Printers must be registered and shared in Universal Print before Intune Settings catalog policies can provision their queues. Intune can then automatically install the selected queues; non-AVD shared physical Windows devices are not officially supported and may encounter policy, MFA, or installation issues. |
+| Shared physical Windows devices and Intune provisioning | Printers must be registered and shared in Universal Print before Intune Settings catalog policies can provision their queues. Intune can then automatically install the selected queues; non-AVD shared physical Windows devices are not officially supported and may encounter policy, MFA, or installation issues. |
 
 ---
 
