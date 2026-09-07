@@ -3,7 +3,6 @@
 **Audience:** Administrator
 **Platform:** iOS & Android
 **Intune workload:** Conditional Access
-**Last reviewed:** See file history
 **Status:** Deprecation notice
 
 ---
