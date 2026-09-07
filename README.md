@@ -4,38 +4,67 @@ Step-by-step guides for admins and users to configure and use Microsoft Intune a
 
 ---
 
+## 📍 Start here
+
+Guides live under [`docs/`](docs/), organized by Intune workload and scenario:
+
+- **[`app-protection/`](docs/app-protection/)** — MAM / App Protection Policy guides (managing apps without device enrollment).
+- **[`device-enrollment/`](docs/device-enrollment/)** — Android and iOS/iPadOS device enrollment scenarios.
+- **[`conditional-access/`](docs/conditional-access/)** — Conditional Access guidance and deprecation notes.
+- **[`printing/`](docs/printing/)** — Universal Print deployment guidance.
+
+Each scenario folder contains an admin-focused guide and/or a user-focused guide. New guides should follow the same layout — see [`templates/guide-template.md`](templates/guide-template.md) for the starting point.
+
+---
+
 ## 📋 Guides Overview
 
-### 🔒 MAM – Mobile Application Management (Without Enrollment)
+### 🔒 App Protection – MAM (Without Enrollment)
 
 Manage company apps on personal devices **without enrolling the device** into Intune.
 
-| File | Audience | Description |
-|------|----------|-------------|
-| [MAM admin.md](MAM%20admin.md) | Admin | Configure MAM policies in Intune: deploy apps (Outlook, Teams, OneDrive, Authenticator), set up App Protection Policies, App Configuration Policies, and assign them to users. |
-| [MAM user.md](MAM%20user.md) | End User | Install Company Portal, sign in with a work account, install apps, and enable contact sync on a personal device — without device enrollment. |
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Admin guide](docs/app-protection/mam-without-enrollment/admin-guide.md) | Admin | iOS & Android | Configure MAM policies in Intune: deploy apps (Outlook, Teams, OneDrive, Authenticator), set up App Protection Policies, App Configuration Policies, and assign them to users. |
+| [User guide](docs/app-protection/mam-without-enrollment/user-guide.md) | End User | iOS & Android | Install Company Portal, sign in with a work account, install apps, and enable contact sync on a personal device — without device enrollment. |
 
 ---
 
-### 🤖 Android Work Profile (WP)
+### 🤖 Device Enrollment – Android Work Profile
 
 Separate work and personal data on Android devices using an **Android Enterprise Work Profile**.
 
-| File | Audience | Description |
-|------|----------|-------------|
-| [WP admin.md](WP%20admin.md) | Admin | Enable Android Enterprise, configure Work Profile enrollment, approve apps via Managed Google Play, deploy App Protection Policies, App Configuration Policies, and compliance policies. |
-| [WP user.md](WP%20user.md) | End User | Enroll an Android device, set up the Work Profile, install apps, allow contacts permission, and understand how work contacts appear for caller ID and search while keeping work and personal data separate. |
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Admin guide](docs/device-enrollment/android-work-profile/admin-guide.md) | Admin | Android | Enable Android Enterprise, configure Work Profile enrollment, approve apps via Managed Google Play, deploy App Protection Policies, App Configuration Policies, and compliance policies. |
+| [User guide](docs/device-enrollment/android-work-profile/user-guide.md) | End User | Android | Enroll an Android device, set up the Work Profile, install apps, allow contacts permission, and understand how work contacts appear for caller ID and search while keeping work and personal data separate. |
 
 ---
 
-### 🍎 iOS Device Enrollment (Company Portal)
+### 🍎 Device Enrollment – iOS/iPadOS (Company Portal)
 
 Fully enroll **iPhone / iPad** devices into Intune via Company Portal (BYOD).
 
-| File | Audience | Description |
-|------|----------|-------------|
-| [iOS device enrollment admin.md](iOS%20device%20enrollment%20admin.md) | Admin | Configure iOS enrollment prerequisites, deploy and assign required apps, set up App Protection Policies, App Configuration Policies, and compliance policies. |
-| [iOS device enrollment user.md](iOS%20device%20enrollment%20user.md) | End User | Install Company Portal, enroll the device, install a management profile, and complete app setup. Covers how work contacts sync to the device. |
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Admin guide](docs/device-enrollment/ios-ipados-company-portal/admin-guide.md) | Admin | iOS/iPadOS | Configure iOS enrollment prerequisites, deploy and assign required apps, set up App Protection Policies, App Configuration Policies, and compliance policies. |
+| [User guide](docs/device-enrollment/ios-ipados-company-portal/user-guide.md) | End User | iOS/iPadOS | Install Company Portal, enroll the device, install a management profile, and complete app setup. Covers how work contacts sync to the device. |
+
+---
+
+### 🖨️ Printing – Universal Print
+
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Deployment plan](docs/printing/universal-print/deployment-plan.md) | Admin | Cross-platform | Plan and deploy Universal Print, including licensing, printer registration, sharing, and policy configuration. |
+
+---
+
+### 🚦 Conditional Access
+
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Require approved client app – deprecation](docs/conditional-access/require-approved-client-app-deprecation.md) | Admin | iOS & Android | Understand the deprecation of the "Require approved client app" Conditional Access grant control and how to migrate to app protection–based policies. |
 
 ---
 
