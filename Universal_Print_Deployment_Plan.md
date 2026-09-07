@@ -310,7 +310,7 @@ Universal Print is **secure by default** and leverages Zero Trust principles:
 
 - All print traffic is authenticated via Microsoft Entra ID
 - No inbound firewall rules required — communication is outbound HTTPS only
-- Print jobs are encrypted in transit with TLS 1.2 or TLS 1.3. Queued jobs are stored temporarily in Microsoft 365 cloud storage and can remain for up to 10 days total; the retention window can include time after printing.
+- Print jobs are encrypted in transit with TLS 1.2 or TLS 1.3. Queued jobs are stored temporarily in Microsoft 365 cloud storage and can remain for up to 10 days total; the 10-day window starts at job submission, so any remaining time continues after the job is printed.
 - Production systems are isolated and not internet-accessible; JIT elevation is required for access
 
 ### Key security recommendations
