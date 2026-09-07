@@ -28,7 +28,10 @@ When you submit a pull request, a CLA bot will automatically determine whether y
 - Write in clear, plain English.
 - Use numbered steps for sequential instructions.
 - Use screenshots sparingly — only when a visual is essential.
-- Follow the existing file naming convention: `<feature> <audience>` (e.g., `MAM admin.md`).
+- Store guides under `docs/<workload>/<scenario>/` (e.g., `docs/app-protection/mam-without-enrollment/`).
+- Use lowercase, hyphen-separated filenames (e.g., `admin-guide.md`, `user-guide.md`, `deployment-plan.md`).
+- Use [`templates/guide-template.md`](templates/guide-template.md) as the starting point for new guides.
+- Include the standard guide metadata: audience, platform, Intune workload, last-reviewed date, and status.
 - Label content clearly for its intended audience: **Admin** or **End User**.
 - Keep platform-specific instructions (iOS, Android, Windows) clearly separated.
 
