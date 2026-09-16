@@ -41,6 +41,16 @@ Separate work and personal data on Android devices using an **Android Enterprise
 
 ---
 
+### 📦 Device Enrollment – Zebra Android Enterprise (Fully Managed)
+
+Deploy and manage rugged **Zebra Android** devices as **Corporate-owned Fully Managed** with Managed Home Screen kiosk, embedded Zebra system apps, OEMConfig, and Intune-managed firmware (FOTA).
+
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Admin guide](docs/device-enrollment/zebra-fully-managed/admin-guide.md) | Admin | Android (Zebra) | Deploy Zebra devices Fully Managed via QR provisioning, configure Managed Home Screen multi-app kiosk, add embedded Zebra system apps (DataWedge, RxLogger, etc.), deploy Zebra OEMConfig, and manage firmware updates with Intune FOTA — including compatibility boundaries, rollout rings, and troubleshooting. |
+
+---
+
 ### 🍎 Device Enrollment – iOS/iPadOS (Company Portal)
 
 Fully enroll **iPhone / iPad** devices into Intune via Company Portal (BYOD).
