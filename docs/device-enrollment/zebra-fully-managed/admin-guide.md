@@ -228,3 +228,41 @@ Where Intune FOTA is unavailable or unsuitable, Zebra documents File-Based Updat
 The implementation above prioritizes Microsoft Learn pages updated in April–September 2026 and current Zebra TechDocs. The Intune Zebra FOTA documentation now presents the production workflow without a Preview navigation label, while older internal readiness material still references the 2023 public preview; the current public documentation should therefore govern implementation.
 
 Microsoft documentation is authoritative for Intune portal behavior, licensing, assignments and reporting. Zebra documentation is authoritative for MX implementation, schema contents, package behavior, model compatibility and firmware paths. Where a setting appears in Intune but fails on-device, treat the Zebra MX/device matrix and actual LifeGuard build as decisive rather than assuming the console schema guarantees support.
+
+---
+
+## References
+
+Documentation referenced by this guide.
+
+### Microsoft Learn – Intune
+
+- [Set up enrollment for Android Enterprise fully managed devices](https://learn.microsoft.com/en-us/intune/device-enrollment/android/setup-fully-managed)
+- [Enroll Android Enterprise dedicated, fully managed, or corporate-owned work profile devices](https://learn.microsoft.com/en-us/intune/device-enrollment/android/ref-corporate-methods)
+- [Enrollment guide: Enroll Android devices in Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-enrollment/android/guide)
+- [Connect your Intune account to your managed Google Play account](https://learn.microsoft.com/en-us/intune/device-enrollment/android/connect-managed-google-play)
+- [Microsoft Intune licensing](https://learn.microsoft.com/en-us/intune/fundamentals/licensing)
+- [Configure the Microsoft Managed Home Screen app](https://learn.microsoft.com/en-us/intune/app-management/configuration/configure-managed-home-screen)
+- [Set permissions to Managed Home Screen using Android Enterprise](https://learn.microsoft.com/en-us/intune/device-configuration/templates/configure-managed-home-screen-permissions-android)
+- [Android Enterprise device restriction settings](https://learn.microsoft.com/en-us/intune/device-configuration/templates/ref-device-restrictions-android-enterprise)
+- [Manage Android Enterprise system apps](https://learn.microsoft.com/en-us/intune/app-management/configuration/manage-system-apps-android)
+- [Add and assign managed Google Play apps to Android Enterprise devices](https://learn.microsoft.com/en-us/intune/app-management/deployment/add-managed-google-play)
+- [Use OEMConfig on Android Enterprise devices in Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-configuration/templates/configure-oemconfig-android)
+- [Deploy OEMConfig profiles to Zebra devices using Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-configuration/templates/deploy-oemconfig-zebra-android)
+- [Zebra LifeGuard Over-the-Air integration with Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-updates/android/setup-zebra-lifeguard)
+- [Manage Android FOTA updates with Microsoft Intune](https://learn.microsoft.com/en-us/intune/device-updates/android/manage-fota)
+- [Sync device in Company Portal for Android](https://learn.microsoft.com/en-us/intune/user-help/device-actions/sync-device-android)
+
+### Zebra documentation
+
+- [Full MX Feature Matrix](https://techdocs.zebra.com/mx/compatibility/)
+- [Zebra Managed Configurations (OEMConfig)](https://techdocs.zebra.com/oemconfig/latest/mc2/)
+- [OEMConfig Setup](https://techdocs.zebra.com/oemconfig/latest/setup/)
+- [About Zebra LifeGuard for Android](https://techdocs.zebra.com/lifeguard/about/)
+- [Device Update (LifeGuard)](https://techdocs.zebra.com/lifeguard/update/)
+- [LifeGuard Over-the-Air Manager](https://techdocs.zebra.com/mx/fotamgr/)
+- [Enterprise Home Screen (EHS) special features](https://techdocs.zebra.com/ehs/7-1/guide/features/)
+- [About RxLogger](https://techdocs.zebra.com/rxlogger/5-4/guide/about/)
+- [RxLogger user guide](https://techdocs.zebra.com/rxlogger/latest/guide/usage/)
+- [About Device Central](https://techdocs.zebra.com/devicecentral/latest/guide/about/)
+- [Enable DataWedge application in Android devices (Zebra Support)](https://support.zebra.com/article/Enable-DataWedge-Application-in-Android-Devices)
