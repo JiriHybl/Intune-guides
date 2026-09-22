@@ -28,16 +28,23 @@ Set up your iPhone or iPad for work access using Company Portal and install requ
 
 ---
 
-## 4. Allow device management
+## 4. Install the management profile
 
-During setup:
+When your organization enrolls your device, Company Portal will prompt you to install a management profile.
 
-- You will be asked to install a management profile
-- Go to:
-  Settings → General → VPN & Device Management
+Follow these steps:
 
-- Select:
-  Install profile
+1. If you see a message saying **Profile Downloaded**, tap **Close**.
+2. Open the **Settings** app.
+3. Go to **Profile Downloaded** at the top of Settings.
+   - If you do not see **Profile Downloaded**, go to **General → VPN & Device Management**.
+4. Tap the downloaded management profile.
+5. Tap **Install**.
+6. Enter your device passcode if prompted.
+7. Review the **Remote Management** warning and tap **Install**.
+8. Tap **Trust** when prompted.
+9. Tap **Done**.
+10. Return to **Company Portal** to finish enrollment.
 
 ---
 
