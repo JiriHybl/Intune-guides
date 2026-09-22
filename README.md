@@ -9,7 +9,7 @@ Step-by-step guides for admins and users to configure and use Microsoft Intune a
 Guides live under [`docs/`](docs/), organized by Intune workload and scenario:
 
 - **[`app-protection/`](docs/app-protection/)** — MAM / App Protection Policy guides (managing apps without device enrollment).
-- **[`device-enrollment/`](docs/device-enrollment/)** — Android and iOS/iPadOS device enrollment scenarios.
+- **[`device-enrollment/`](docs/device-enrollment/)** — Android, iOS/iPadOS, and Linux device enrollment scenarios.
 - **[`conditional-access/`](docs/conditional-access/)** — Conditional Access guidance and deprecation notes.
 - **[`printing/`](docs/printing/)** — Universal Print deployment guidance.
 
@@ -62,6 +62,16 @@ Fully enroll **iPhone / iPad** devices into Intune via Company Portal (BYOD).
 
 ---
 
+### 🐧 Device Enrollment – Ubuntu Desktop (Microsoft Entra + SSO)
+
+Enroll **Ubuntu Desktop** devices into Intune with a Microsoft Entra work or school account and validate SSO-oriented access with Microsoft Edge.
+
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [User guide](docs/device-enrollment/ubuntu-entra-sso/user-guide.md) | End User / Admin | Ubuntu Desktop | Install the Microsoft Intune app, enroll Ubuntu with a Microsoft Entra account, verify the device in Intune and Entra, and test SSO behavior with Microsoft Edge. |
+
+---
+
 ### 🖨️ Printing – Universal Print
 
 | Guide | Audience | Platform | Description |
@@ -85,6 +95,7 @@ Fully enroll **iPhone / iPad** devices into Intune via Company Portal (BYOD).
 | MAM | ❌ No | iOS & Android | iOS: copied to device · Android: device-dependent |
 | Work Profile | ✅ Yes (Work Profile) | Android | Contacts stay in Work Profile; available for caller ID |
 | iOS Enrollment | ✅ Yes (MDM) | iOS | Contacts copied to device; accessible by all apps |
+| Ubuntu Enrollment | ✅ Yes (Intune app) | Ubuntu Desktop | Not applicable |
 
 ---
 
