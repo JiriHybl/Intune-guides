@@ -11,6 +11,7 @@ Guides live under [`docs/`](docs/), organized by Intune workload and scenario:
 - **[`app-protection/`](docs/app-protection/)** — MAM / App Protection Policy guides (managing apps without device enrollment).
 - **[`device-enrollment/`](docs/device-enrollment/)** — Android, iOS/iPadOS, and Linux device enrollment scenarios.
 - **[`conditional-access/`](docs/conditional-access/)** — Conditional Access guidance and deprecation notes.
+- **[`updates/`](docs/updates/)** — Windows Update and servicing guidance.
 - **[`printing/`](docs/printing/)** — Universal Print deployment guidance.
 
 Each scenario folder contains an admin-focused guide and/or a user-focused guide. New guides should follow the same layout — see [`templates/guide-template.md`](templates/guide-template.md) for the starting point.
@@ -77,6 +78,16 @@ Enroll **Ubuntu Desktop** devices into Intune with a Microsoft Entra work or sch
 | Guide | Audience | Platform | Description |
 |------|----------|----------|-------------|
 | [Deployment plan](docs/printing/universal-print/deployment-plan.md) | Admin | Cross-platform | Plan and deploy Universal Print, including licensing, printer registration, sharing, and policy configuration. |
+
+---
+
+### 🔄 Updates – Windows
+
+Configure and validate Windows Update servicing controls with Microsoft Intune.
+
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Maintenance windows](docs/updates/windows/maintenance-windows/admin-guide.md) | Admin | Windows | Configure Windows Update maintenance windows in Intune to control when update installation and restart actions are allowed to start. |
 
 ---
 
