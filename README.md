@@ -73,6 +73,16 @@ Enroll **Ubuntu Desktop** devices into Intune with a Microsoft Entra work or sch
 
 ---
 
+### 🍎 Device Enrollment – macOS Platform SSO Migration
+
+Validate migration from standalone Enterprise SSO App Extension to Platform SSO on macOS using a safe test sequence (configure, register, validate, remove legacy profile, validate again).
+
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Admin guide](docs/device-enrollment/macos-platform-sso-migration/admin-guide.md) | Admin | macOS | Test-focused migration guide for moving from Enterprise SSO to Platform SSO in Intune, including prerequisites, registration, validation, Conditional Access checks, and cleanup. |
+
+---
+
 ### 🖨️ Printing – Universal Print
 
 | Guide | Audience | Platform | Description |
