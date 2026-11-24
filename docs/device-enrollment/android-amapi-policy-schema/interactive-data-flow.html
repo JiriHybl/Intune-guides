@@ -126,6 +126,9 @@
       line-height: 1;
     }
     .flow.reports { background: linear-gradient(135deg, #7253ff, #6550d9); }
+    .flow.policy { background: linear-gradient(135deg, #275bdf, #2f68ff); }
+    .flow.enroll { background: linear-gradient(135deg, #088eae, #06a6c8); }
+    .flow.state { background: linear-gradient(135deg, #7253ff, #6550d9); }
     .legend {
       margin-top: 14px;
       border: 1px solid #3a5583;
@@ -161,7 +164,7 @@
 
     <section class="boundary" data-comp="customer">
       <div class="boundary-label">CUSTOMER BOUNDARY</div>
-      <h2>Telenor</h2>
+      <h2>Customer</h2>
       <div class="cards">
         <article class="card" data-comp="intune-admin"><strong>Intune Administrator</strong><span>Creates configuration, compliance, application and enrollment intent.</span></article>
         <article class="card" data-comp="entra-groups"><strong>Microsoft Entra groups</strong><span>Users and devices targeted by assignments.</span></article>
@@ -172,6 +175,9 @@
     <section class="flows">
       <button class="flow admin" data-flow="admin"><small>↓</small><b>ADMIN</b></button>
       <button class="flow reports" data-flow="reports"><small>↑</small><b>REPORTS</b></button>
+      <button class="flow policy" data-flow="am-api-policy"><small>↓</small><b>AM API POLICY</b></button>
+      <button class="flow enroll" data-flow="enroll"><small>↓</small><b>ENROLL</b></button>
+      <button class="flow state" data-flow="state"><small>↑</small><b>STATE</b></button>
     </section>
 
     <section class="boundary" data-comp="microsoft">
@@ -186,10 +192,10 @@
 
     <section class="boundary" data-comp="google">
       <div class="boundary-label">GOOGLE BOUNDARY</div>
-      <h2>Google cloud</h2>
+      <h2>Google Android Enterprise</h2>
       <div class="cards">
-        <article class="card" data-comp="amapi"><strong>Android Management API</strong><span>DPC policy channel and enterprise policy exchange.</span></article>
-        <article class="card" data-comp="mgp"><strong>Managed Google Play</strong><span>App approval, distribution and managed app metadata.</span></article>
+        <article class="card" data-comp="amapi"><strong>Android Management API</strong><span>Enterprise, policy, enrolment-token and device resources.</span></article>
+        <article class="card" data-comp="mgp"><strong>Managed Google Play</strong><span>Managed app approval, assignment metadata and distribution.</span></article>
       </div>
     </section>
 
@@ -220,6 +226,18 @@
       reports: {
         comps: ["customer", "it-ops", "microsoft", "intune-service", "intune-reporting"],
         text: "REPORTS: Intune reporting services provide consolidated errors, status, compliance, and inventory views to IT operations."
+      },
+      "am-api-policy": {
+        comps: ["microsoft", "intune-service", "google", "amapi", "device", "adp", "work-profile"],
+        text: "AM API POLICY: Intune policy intent is published through Android Management API and enforced by Android Device Policy in the work profile scope."
+      },
+      enroll: {
+        comps: ["microsoft", "intune-enrollment", "google", "amapi", "device", "adp"],
+        text: "ENROLL: Enrollment orchestration flows from Intune enrollment services through Android Management API to provision and register the device."
+      },
+      state: {
+        comps: ["google", "amapi", "microsoft", "intune-reporting", "intune-service", "customer", "it-ops"],
+        text: "STATE: Device and compliance state flows back from Android Enterprise to Intune reporting surfaces consumed by IT operations."
       }
     };
 
