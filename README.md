@@ -42,6 +42,17 @@ Separate work and personal data on Android devices using an **Android Enterprise
 
 ---
 
+### 🧩 Device Enrollment – Android AMAPI Policy Schema
+
+Publish and maintain an **Android Management API (AMAPI) policy schema** snapshot for Intune scenario design and policy mapping.
+
+| Guide | Audience | Platform | Description |
+|------|----------|----------|-------------|
+| [Admin guide](docs/device-enrollment/android-amapi-policy-schema/admin-guide.md) | Admin | Android | Use a versioned AMAPI schema snapshot and map key policy fields to Intune Android Enterprise configuration and app deployment controls. |
+| [Schema snapshot](docs/device-enrollment/android-amapi-policy-schema/amapi-reference.md) | Admin | Android | Repository snapshot of the AMAPI `enterprises.policies` schema reference for review, diffing, and scenario updates. |
+
+---
+
 ### 📦 Device Enrollment – Zebra Android Enterprise (Fully Managed)
 
 Deploy and manage rugged **Zebra Android** devices as **Corporate-owned Fully Managed** with Managed Home Screen kiosk, embedded Zebra system apps, OEMConfig, and Intune-managed firmware (FOTA).
@@ -115,6 +126,7 @@ Configure and validate Windows Update servicing controls with Microsoft Intune.
 |----------|-------------------|----------|-----------------------|
 | MAM | ❌ No | iOS & Android | iOS: copied to device · Android: device-dependent |
 | Work Profile | ✅ Yes (Work Profile) | Android | Contacts stay in Work Profile; available for caller ID |
+| AMAPI Policy Schema | ✅ Yes (Android Enterprise) | Android | Not a contact-sync scenario; policy schema and control mapping reference |
 | iOS Enrollment | ✅ Yes (MDM) | iOS | Contacts copied to device; accessible by all apps |
 | Ubuntu Enrollment | ✅ Yes (Intune app) | Ubuntu Desktop | Not applicable |
 
