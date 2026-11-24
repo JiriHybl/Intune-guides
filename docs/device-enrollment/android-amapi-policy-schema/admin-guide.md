@@ -17,7 +17,6 @@ Use this when you want an Intune-friendly policy baseline that maps to AMAPI con
 ## Artifacts in this scenario
 
 - Schema snapshot: [`amapi-reference.md`](./amapi-reference.md)
-- Interactive diagram: [`interactive-data-flow.html`](./interactive-data-flow.html)
 - Scenario guide: this file (`admin-guide.md`)
 
 ## Prerequisites
