@@ -103,7 +103,7 @@
     }
     .flows {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
       margin: 14px 0 4px;
     }
@@ -126,8 +126,6 @@
       line-height: 1;
     }
     .flow.reports { background: linear-gradient(135deg, #7253ff, #6550d9); }
-    .flow.policy { background: linear-gradient(135deg, #1f9cb5, #0cb8d0); }
-    .flow.apps { background: linear-gradient(135deg, #0f8f64, #0bb36c); }
     .legend {
       margin-top: 14px;
       border: 1px solid #3a5583;
@@ -147,7 +145,7 @@
       h1 { font-size: 34px; }
       .boundary h2 { font-size: 34px; }
       .cards { grid-template-columns: 1fr; }
-      .flows { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flows { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -174,17 +172,15 @@
     <section class="flows">
       <button class="flow admin" data-flow="admin"><small>↓</small><b>ADMIN</b></button>
       <button class="flow reports" data-flow="reports"><small>↑</small><b>REPORTS</b></button>
-      <button class="flow policy" data-flow="policy"><small>⇢</small><b>POLICY</b></button>
-      <button class="flow apps" data-flow="apps"><small>⇢</small><b>APPS</b></button>
     </section>
 
     <section class="boundary" data-comp="microsoft">
       <div class="boundary-label">MICROSOFT BOUNDARY</div>
       <h2>Microsoft cloud</h2>
       <div class="cards">
-        <article class="card" data-comp="intune-service"><strong>Microsoft Intune service</strong><span>Stores policy, app assignment and compliance intent.</span></article>
-        <article class="card" data-comp="entra-id"><strong>Microsoft Entra ID</strong><span>Identity, group targeting and conditional access context.</span></article>
-        <article class="card" data-comp="intune-app"><strong>Microsoft Intune app</strong><span>User-facing app for support actions and diagnostics.</span></article>
+        <article class="card" data-comp="intune-service"><strong>Microsoft Intune service</strong><span>Management orchestration, assignments and configuration.</span></article>
+        <article class="card" data-comp="intune-enrollment"><strong>Intune enrollment services</strong><span>Web enrollment and tenant-specific enrollment orchestration.</span></article>
+        <article class="card" data-comp="intune-reporting"><strong>Intune reporting services</strong><span>Aggregates compliance, app, and device telemetry for admin reporting.</span></article>
       </div>
     </section>
 
@@ -218,20 +214,12 @@
     const flowButtons = Array.from(document.querySelectorAll(".flow"));
     const flowMap = {
       admin: {
-        comps: ["customer", "intune-admin", "entra-groups", "microsoft", "intune-service", "entra-id"],
+        comps: ["customer", "intune-admin", "entra-groups", "microsoft", "intune-service", "intune-enrollment"],
         text: "ADMIN: Intune administrator and Entra groups define and target configuration intent through Microsoft Intune service."
       },
       reports: {
-        comps: ["customer", "it-ops", "microsoft", "intune-service", "device", "adp", "work-profile", "managed-apps"],
-        text: "REPORTS: Device, profile, and app state returns via Intune service to IT operations for monitoring and troubleshooting."
-      },
-      policy: {
-        comps: ["microsoft", "intune-service", "google", "amapi", "device", "adp", "work-profile"],
-        text: "POLICY: Intune policy intent flows to AM API, then to Android Device Policy for enforcement in the work profile scope."
-      },
-      apps: {
-        comps: ["microsoft", "intune-service", "google", "mgp", "device", "work-profile", "managed-apps"],
-        text: "APPS: Managed Google Play app approvals and assignments flow to the work profile, where managed work apps are installed and updated."
+        comps: ["customer", "it-ops", "microsoft", "intune-service", "intune-reporting"],
+        text: "REPORTS: Intune reporting services provide consolidated errors, status, compliance, and inventory views to IT operations."
       }
     };
 
