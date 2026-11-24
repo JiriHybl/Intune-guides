@@ -50,6 +50,7 @@ Publish and maintain an **Android Management API (AMAPI) policy schema** snapsho
 |------|----------|----------|-------------|
 | [Admin guide](docs/device-enrollment/android-amapi-policy-schema/admin-guide.md) | Admin | Android | Use a versioned AMAPI schema snapshot and map key policy fields to Intune Android Enterprise configuration and app deployment controls. |
 | [Schema snapshot](docs/device-enrollment/android-amapi-policy-schema/amapi-reference.md) | Admin | Android | Repository snapshot of the AMAPI `enterprises.policies` schema reference for review, diffing, and scenario updates. |
+| [Interactive data-flow diagram](docs/device-enrollment/android-amapi-policy-schema/interactive-data-flow.html) | Admin / Customer | Android | Interactive component-level AM API flow diagram with hover/click highlighting and legend updates. |
 
 ---
 
