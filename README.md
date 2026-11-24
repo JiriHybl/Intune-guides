@@ -10,11 +10,14 @@ Guides live under [`docs/`](docs/), organized by Intune workload and scenario:
 
 - **[`app-protection/`](docs/app-protection/)** — MAM / App Protection Policy guides (managing apps without device enrollment).
 - **[`device-enrollment/`](docs/device-enrollment/)** — Android, iOS/iPadOS, and Linux device enrollment scenarios.
+- **[`am-api-data-flow/`](docs/am-api-data-flow/)** — Interactive Android Enterprise component-level data flow diagram.
 - **[`conditional-access/`](docs/conditional-access/)** — Conditional Access guidance and deprecation notes.
 - **[`updates/`](docs/updates/)** — Windows Update and servicing guidance.
 - **[`printing/`](docs/printing/)** — Universal Print deployment guidance.
 
 Each scenario folder contains an admin-focused guide and/or a user-focused guide. New guides should follow the same layout — see [`templates/guide-template.md`](templates/guide-template.md) for the starting point.
+
+To view the interactive diagram online, enable GitHub Pages in **Settings > Pages**, choose **Deploy from a branch**, and select **main** with **/docs**. After deployment, open https://JiriHybl.github.io/Intune-guides/am-api-data-flow/. GitHub's repository file viewer displays HTML source rather than running it.
 
 ---
 
