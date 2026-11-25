@@ -10,7 +10,7 @@ Guides live under [`docs/`](docs/), organized by Intune workload and scenario:
 
 - **[`app-protection/`](docs/app-protection/)** — MAM / App Protection Policy guides (managing apps without device enrollment).
 - **[`device-enrollment/`](docs/device-enrollment/)** — Android, iOS/iPadOS, and Linux device enrollment scenarios.
-- **[`am-api-data-flow/`](docs/am-api-data-flow/)** — Interactive Android Enterprise component-level data flow diagram.
+- **[`am-api-data-flow/`](https://jirihybl.github.io/Intune-guides/am-api-data-flow/)** — Interactive Android Enterprise component-level data flow diagram.
 - **[`conditional-access/`](docs/conditional-access/)** — Conditional Access guidance and deprecation notes.
 - **[`updates/`](docs/updates/)** — Windows Update and servicing guidance.
 - **[`printing/`](docs/printing/)** — Universal Print deployment guidance.
